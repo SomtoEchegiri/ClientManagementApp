@@ -1,0 +1,70 @@
+<div>
+    <div class="col bg-light center-v">
+        <div class="border border-secondary px-5 py-5">
+            <h2 class="mb-4 text-center">Create a Client</h2>
+            <p class="text-center">Please fill in this form to create a client.</p>
+            <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm.value)">
+
+                <!-- Name Field -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" ngModel required minlength="3"
+                        #name="ngModel">
+                    <div *ngIf="name.invalid && name.touched">
+                        <small *ngIf="name.errors?.['required']">Name is required</small>
+                        <small *ngIf="name.errors?.['minlength']">must be at least 3 characters long</small>
+                    </div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" ngModel required email
+                        #email="ngModel">
+                    <div *ngIf="email.invalid && email.touched">
+                        <small *ngIf="email.errors?.['required']">Email is required</small>
+                        <small *ngIf="email.errors?.['email']">Please enter a valid email</small>
+                    </div>
+                </div>
+
+                <!-- Address Field -->
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" ngModel required minlength="5"
+                        #address="ngModel">
+                    <div *ngIf="address.invalid && address.touched">
+                        <small *ngIf="address.errors?.['required']">Address is required</small>
+                        <small *ngIf="address.errors?.['minlength']"></small>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" ngModel required
+                        minlength="6" #password="ngModel">
+                    <div *ngIf="password.invalid && password.touched">
+                        <small *ngIf="password.errors?.['required']">Password is required</small>
+                        <small *ngIf="password.errors?.['minlength']">must be at least 6 characters long</small>
+                    </div>
+                </div>
+
+                <!-- Repeat Password Field -->
+                <div class="mb-3">
+                    <label for="repeatPassword" class="form-label">Repeat Password</label>
+                    <input type="password" class="form-control" id="repeatPassword" name="repeatPassword"
+                        ngModel required #repeatPassword="ngModel">
+                    <div *ngIf="repeatPassword.touched">
+                        <small *ngIf="repeatPassword.errors?.['required']">Password is required</small>
+                        <small *ngIf="!repeatPassword.errors?.['required'] && repeatPassword.value !== password.value">Passwords must match</small>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="clientForm.invalid || repeatPassword.value !== password.value">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

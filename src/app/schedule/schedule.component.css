@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background: linear-gradient(#622bc9, #923af7); /* Optional: Set a background color */
+  }
+
+  small {
+    color: red;
+}
+
+.w-90 {
+  width: 90% !important;
+}

@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background: linear-gradient(#622bc9, #923af7); /* Optional: Set a background color */
+  }
+
+  .text-center {
+    color: rgb(255, 255, 255); /* Ensures the text stands out against the background */
+    
+  }

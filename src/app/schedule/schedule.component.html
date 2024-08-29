@@ -1,0 +1,46 @@
+<div class="bg-light">
+    <div class="border border-secondary px-5 py-5">
+        <h2 class="mb-4 text-center">Create a Meeting Schedule</h2>
+        <p class="text-center">Please fill in this form to create a meeting schedule.</p>
+        <form #meetingForm="ngForm" (ngSubmit)="onSubmit(meetingForm.value)">
+
+            <!-- Meeting Topic Field -->
+            <div class="mb-3">
+                <label for="meetingTopic" class="form-label">Meeting Topic</label>
+                <input type="text" class="form-control" id="meetingTopic" name="meetingTopic" ngModel required minlength="3"
+                    #meetingTopic="ngModel">
+                <div *ngIf="meetingTopic.invalid && meetingTopic.touched">
+                    <small *ngIf="meetingTopic.errors?.['required']">Meeting topic is required</small>
+                    <small *ngIf="meetingTopic.errors?.['minlength']">Meeting topic must be at least 3 characters long</small>
+                </div>
+            </div>
+
+            <!-- Number of People Field -->
+            <div class="mb-3">
+                <label for="numberOfPeople" class="form-label">Number of People</label>
+                <input type="number" class="form-control" id="numberOfPeople" name="numberOfPeople" ngModel required min="1"
+                    #numberOfPeople="ngModel">
+                <div *ngIf="numberOfPeople.invalid && numberOfPeople.touched">
+                    <small *ngIf="numberOfPeople.errors?.['required']">Number of people is required</small>
+                    <small *ngIf="numberOfPeople.errors?.['min']">There must be at least 1 person</small>
+                </div>
+            </div>
+
+            <!-- Start Time Field -->
+            <div class="mb-3">
+                <label for="startTime" class="form-label">Start Time</label>
+                <input type="datetime-local" class="form-control" id="startTime" name="startTime" ngModel required
+                    #startTime="ngModel">
+                <div *ngIf="startTime.invalid && startTime.touched">
+                    <small *ngIf="startTime.errors?.['required']">Start time is required</small>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary w-100" [disabled]="meetingForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
